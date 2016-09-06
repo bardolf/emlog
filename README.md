@@ -1,3 +1,10 @@
+Why forked
+==========
+emlog satisfies all my needs, but the non-blocking approach. I want to use is as a regular file with regular
+utilities like cat, head, tail etc. I removed the blocking part and it works like a charm. 
+
+
+
 emlog -- the EMbedded-system LOG-device
 =======================================
 

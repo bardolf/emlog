@@ -297,18 +297,17 @@ static ssize_t emlog_read(struct file *file, char __user *buffer,      /* The bu
         return -EIO;
     }
 
-    /* wait until there's data available (unless we do nonblocking reads) */
-    if (file->f_flags & O_NONBLOCK
-        && *offset >= EMLOG_FIRST_EMPTY_BYTE(einfo))
-        return -EAGAIN;
-
-    wait_event_interruptible((einfo)->read_q,
-                             *offset <
-                             (einfo)->offset + EMLOG_QLEN(einfo));
-
-    /* see if a signal woke us up */
-    if (signal_pending(current))
-        return -ERESTARTSYS;
+    /* wait until there's data available (unless we do nonblocking reads) */    
+//    if (*offset >= EMLOG_FIRST_EMPTY_BYTE(einfo))
+//        return -EAGAIN;
+//
+//    wait_event_interruptible((einfo)->read_q,
+//                             *offset <
+//                             (einfo)->offset + EMLOG_QLEN(einfo));
+//
+//    /* see if a signal woke us up */
+//    if (signal_pending(current))
+//        return -ERESTARTSYS;
 
     if ((data_to_return = read_from_emlog(einfo, &length, offset)) == NULL)
         return 0;
